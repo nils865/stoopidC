@@ -6,6 +6,7 @@
 #include <chrono>
 
 #include "cpp/utils/utils.hpp"
+#include "cpp/math/math.hpp"
 #include "cpp/strings/stringHandler.hpp"
 #include "cpp/bools/boolManager.hpp"
 #include "cpp/comment/comment.hpp"
@@ -67,7 +68,13 @@ int main(int argc, char *argv[]) {
                 std::cout << removeQuotation(utils::getValue(utils::combineArgs(linepieces, 1))) << std::endl;
             } else if (linepieces[0] == "goto") {
                 // change the next line read by the interpreter
-                line = stoi(linepieces[1]) - 2;
+                std::string args = utils::trim(utils::combineArgs(linepieces, ' '), 1);
+
+                if (!isNumber(args)){
+                    throw error::notANumber(args);
+                }
+
+                line = stoi(args) - 2;
             } else if (linepieces[0] == "sleep") {
                 std::string arg = utils::getValue(utils::combineArgs(linepieces, 1));
                 if (!isNumber(arg)) throw error::invalidValue(arg);
@@ -82,7 +89,11 @@ int main(int argc, char *argv[]) {
                 std::string condition = utils::getValue(utils::combineArgs(linepieces, 2));
 
                 if (condition == "true") {
-                    line = stoi(linepieces[1]) - 2;
+                    if (!isNumber(utils::trim(linepieces[1], ' '))) {
+                        throw error::notANumber(utils::trim(linepieces[1], ' '));
+                    }
+
+                    line = stoi(utils::trim(linepieces[1], ' ')) - 2;
                 } else if (condition == "false") {
                     continue;
                 } else {
