@@ -13,4 +13,5 @@ namespace error {
     std::string mathError(std::string math);
     std::string escapeError(char ch);
     std::string notABoolean(std::string boolean);
+    std::string notANumber(std::string number);
 }

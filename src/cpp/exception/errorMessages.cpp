@@ -42,6 +42,10 @@ namespace error {
     }
 
     std::string notABoolean(std::string boolean) {
-        return "\'" + boolean + "\' is not a boolean character";
+        return "\'" + boolean + "\' is not a boolean!";
+    }
+
+    std::string notANumber(std::string number) {
+        return "\'" + number + "\' is not a number!";
     }
 }
