@@ -78,6 +78,16 @@ int main(int argc, char *argv[]) {
             } else if (linepieces[0] == "end") {
                 // ends the execution of the script
                 return 0;
+            } else if (linepieces[0] == "goif") {
+                std::string condition = utils::getValue(utils::combineArgs(linepieces, 2));
+
+                if (condition == "true") {
+                    line = stoi(linepieces[1]) - 2;
+                } else if (condition == "false") {
+                    continue;
+                } else {
+                    throw 69;
+                }
             } else if (linepieces[0] == "" || linepieces[0][0] == '#') {
                 // do nothing on empty lines pr comments
                 continue;

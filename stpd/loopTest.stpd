@@ -4,4 +4,4 @@ a = a + 1
 
 out : a
 
-goto : 3
+goif : 3 : a << 10
