@@ -12,4 +12,5 @@ namespace error {
     std::string stringError(std::string str);
     std::string mathError(std::string math);
     std::string escapeError(char ch);
+    std::string notABoolean(std::string boolean);
 }

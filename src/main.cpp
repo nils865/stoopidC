@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
                 } else if (condition == "false") {
                     continue;
                 } else {
-                    throw error::booleanError(condition);
+                    throw error::notABoolean(condition);
                 }
             } else if (linepieces[0] == "" || linepieces[0][0] == '#') {
                 // do nothing on empty lines pr comments

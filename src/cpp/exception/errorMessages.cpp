@@ -38,6 +38,10 @@ namespace error {
     }
 
     std::string escapeError(char ch) {
-        return "\'" + std::to_string(ch) + "\' is not a valid excape character";
+        return "\'" + std::to_string(ch) + "\' is not a valid escape character";
+    }
+
+    std::string notABoolean(std::string boolean) {
+        return "\'" + boolean + "\' is not a boolean character";
     }
 }
