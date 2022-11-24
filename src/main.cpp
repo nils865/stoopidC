@@ -99,6 +99,20 @@ int main(int argc, char *argv[]) {
                 } else {
                     throw error::notABoolean(condition);
                 }
+            } else if (linepieces[0] == "if") {
+                std::string condition = utils::getValue(linepieces[1]);
+
+                if (utils::combineArgs(linepieces, 2) != "{") {
+                    return 1;
+                }
+
+                if (condition == "true") {
+                    continue;
+                } else if (condition == "false") {
+                    continue;
+                } else {
+                    throw error::notABoolean(condition);
+                }
             } else if (linepieces[0] == "" || linepieces[0][0] == '#') {
                 // do nothing on empty lines pr comments
                 continue;
