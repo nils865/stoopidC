@@ -1,1 +1,0 @@
-void throwException(std::string msg);
