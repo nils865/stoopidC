@@ -19,6 +19,7 @@ char *loadFile(char *fileName)
     char ch;
     size_t lineSize = DEFAULT_SIZE;
     char *fileContent = (char*) malloc(lineSize * sizeof(char));
+    fileContent[0] = '\0';
 
     while ((ch = fgetc(file)) != EOF)
     {
