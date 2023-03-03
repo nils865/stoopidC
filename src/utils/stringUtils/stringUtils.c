@@ -27,14 +27,22 @@ char **stringToArray(char *str)
     return strArray;
 }
 
+size_t getStringArraySize(char **strArray)
+{
+    if (strArray == NULL) return 0;
+
+    size_t size = 0;
+
+    while (strArray[size] != NULL) size++;
+
+    return size;
+}
+
 void outputStringArray(char **strArray)
 {
     if (strArray == NULL) return;
 
-    size_t size = 0;
-    while (strArray[size] != NULL) size++;
-
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < getStringArraySize(strArray); i++)
     {
         printf("%s\n", strArray[i]);
     }
