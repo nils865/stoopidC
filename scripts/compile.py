@@ -57,7 +57,7 @@ for f in filelist:
     
 def compile(name):
     print(f'Compiling {COL_GREEN + name + COL_RESET}')
-    p = subprocess.Popen(["g++", "-Wall", "-c", os.path.join("..", name)], cwd=os.path.join("bin"))
+    p = subprocess.Popen(["gcc", "-Wall", "-c", os.path.join("..", name)], cwd=os.path.join("bin"))
     print(f'finished compiling {COL_GREEN + name + COL_RESET}\n')
 
 # compare filehashes and compile if needed
@@ -93,7 +93,7 @@ if not os.path.isdir(os.path.join("build")):
 print("--------------------------------\n")
 print(f'Compiling Executable in {COL_GREEN + os.path.join("build") + COL_RESET} as {COL_GREEN}stoopid{COL_RESET}')
 
-os.system(f'g++ -o {os.path.join("build", "stoopid")} {os.path.join("bin", "*.o")}')
+os.system(f'gcc -o {os.path.join("build", "stoopid")} {os.path.join("bin", "*.o")}')
 
 print(f'Finished compiling executable at {COL_GREEN + os.path.join("build", "stoopid") + COL_RESET}')
 
