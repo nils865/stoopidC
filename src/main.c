@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "utils/fileHandling/fileHandling.h"
+#include "utils/stringUtils/stringUtils.h"
 
 int main(int argc, char **argv)
 {
@@ -12,6 +13,8 @@ int main(int argc, char **argv)
     }
 
     char *fileContent = loadFile(argv[1]);
+    char **lines = stringToArray(fileContent);
+    outputStringArray(lines);
 
     printf("%s", fileContent);
 
