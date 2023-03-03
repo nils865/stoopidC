@@ -11,7 +11,9 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    char **lines = loadFile(argv[1]);
+    char *fileContent = loadFile(argv[1]);
+
+    printf("%s", fileContent);
 
     return 0;
 }

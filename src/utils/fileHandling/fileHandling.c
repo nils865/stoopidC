@@ -2,43 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DEFAULT_SIZE 5
+#define DEFAULT_SIZE 20
 
-char **loadFile(char *filename)
+char *loadFile(char *fileName)
 {
     // load file
-    FILE *file = fopen(filename, "r");
+    FILE *file = fopen(fileName, "r");
 
     if (file == NULL)
     {
-        printf("Could not open file %s\n", filename);
+        printf("Could not open file %s\n", fileName);
         exit(1);
     }
 
     // read file
     char ch;
     size_t lineSize = DEFAULT_SIZE;
-    char *currentLine = (char*)malloc(lineSize * sizeof(char));
-    currentLine[0] = '\0';
+    char *fileContent = (char*) malloc(lineSize * sizeof(char));
 
     while ((ch = fgetc(file)) != EOF)
     {
-        if (ch == '\n')
-        {
-            printf("%s\n", currentLine);
-            currentLine = (char*)malloc(lineSize * sizeof(char));
-            currentLine[0] = '\0';
-            lineSize = DEFAULT_SIZE;
-            continue;
-        }
+        char str[] = { ch, '\0' };
 
-        if (strlen(currentLine) + 1 >= lineSize)
-            currentLine = (char*)realloc(currentLine, (lineSize *= 2) * sizeof(char));
+        if (strlen(fileContent) + 2 >= lineSize)
+            fileContent = (char*) realloc(fileContent, (lineSize *= 2) * sizeof(char));
 
-        char str[] = { ch , '\0' };
-
-        strcat(currentLine, str);
+        strcat(fileContent, str);
     }
 
-    return NULL;
+    return fileContent;
 }

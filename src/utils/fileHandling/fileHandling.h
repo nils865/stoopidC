@@ -1,1 +1,1 @@
-char **loadFile(char *filename);
+char *loadFile(char *fileName);
