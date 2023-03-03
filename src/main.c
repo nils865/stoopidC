@@ -16,7 +16,5 @@ int main(int argc, char **argv)
     char **lines = stringToArray(fileContent);
     outputStringArray(lines);
 
-    printf("%s", fileContent);
-
     return 0;
 }

@@ -17,20 +17,25 @@ char **stringToArray(char *str)
         strcpy(strArray[i], currentString);
 
         currentString = strtok(NULL, "\n");
+
+        if (currentString == NULL)
+        {
+            strArray[i + 1] = NULL;
+        }
     }
 
     return strArray;
 }
 
-void outputStringArray(char *strArray[])
+void outputStringArray(char **strArray)
 {
     if (strArray == NULL) return;
 
-    int size = sizeof(strArray) / (int) sizeof(strArray[0]);
+    size_t size = 0;
+    while (strArray[size] != NULL) size++;
 
-    printf("size: %d\n", size);
-
-    for (int i = 0; i < size; i++) {
+    for (size_t i = 0; i < size; i++)
+    {
         printf("%s\n", strArray[i]);
     }
 }

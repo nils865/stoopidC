@@ -1,3 +1,3 @@
 char **stringToArray(char *str);
 
-void outputStringArray(char **strArray);
+void outputStringArray(char *arr[]);
