@@ -6,8 +6,31 @@
 #include "../validation/validation.h"
 #include "../../utils/stringUtils/stringUtils.h"
 
+Word lexInWord(char *currentWord)
+{
+    Word word;
+
+    for (size_t i = 0; i < strlen(currentWord); i++)
+    {
+        word.type = getWordType(trimString(currentWord + i, ' '));
+
+        if (strcmp(word.type, "NONE") != 0)
+        {
+            word.value = trimString(currentWord + i, ' ');
+            return word;
+        }
+    }
+
+    word.type = getWordType(trimString(currentWord, ' '));
+    word.value = trimString(currentWord, ' ');
+
+    return word;
+}
+
 Word *lexln(char *line)
 {
+    printf("\nLexing line: %s\n\n", line);
+
     Word *words = malloc((strlen(line) + 1) * sizeof(Word));
 
     char *currentWord = malloc((strlen(line) + 1) * sizeof(char));
@@ -21,29 +44,16 @@ Word *lexln(char *line)
         char *type = getWordType(trimString(currentWord, ' '));
         char *value = trimString(currentWord, ' ');
 
-        if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
-        {
-            int found = 0;
-
-            for (size_t j = 0; j < strlen(currentWord); j++)
-            {
-                type = getWordType(trimString(currentWord + j, ' '));
-
-                if (strcmp(type, "NONE") != 0)
-                {
-                    value = trimString(currentWord + j , ' ');
-                    found = 1;
-                    break;
-                }
-            }
-
-            if (found == 0) continue;
-        }
-
         Word word;
         word.value = value;
         word.type = type;
         words[i] = word;
+
+        if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
+        {
+            word = lexInWord(currentWord);
+            if (strcmp(word.type, "NONE") == 0) continue;
+        }
 
         printf("%s | %s\n", word.value, word.type);
 
