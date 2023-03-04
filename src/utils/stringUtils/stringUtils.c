@@ -47,3 +47,15 @@ void outputStringArray(char **strArray)
         printf("%s\n", strArray[i]);
     }
 }
+
+int arrayIncludes(char **arr, char *str)
+{
+    if (arr == NULL) return 0;
+
+    for (size_t i = 0; i < getStringArraySize(arr); i++)
+    {
+        if (strcmp(arr[i], str) == 0) return 1;
+    }
+
+    return 0;
+}

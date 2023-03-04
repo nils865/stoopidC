@@ -1,6 +1,9 @@
-#include "../lexer/lexer.h"
+#include <stdio.h>
 
-const char *keywords[] = {
+#include "../lexer/lexer.h"
+#include "../../utils/stringUtils/stringUtils.h"
+
+char *keywords[] = {
     "var",
     "arr",
     "out",
@@ -12,7 +15,7 @@ const char *keywords[] = {
     "exit"
 };
 
-const char *operators[] = {
+char *operators[] = {
     "+",
     "-",
     "*",
@@ -30,17 +33,17 @@ const char *operators[] = {
     "not"
 };
 
-const char *punctuations[] = {
+char *punctuations[] = {
     ":",
     "(",
     ")"
 };
 
-const char *comments[] = {
+char *comments[] = {
     "#"
 };
 
-const char *wordTypes[] = {
+char *wordTypes[] = {
     "Keyword",
     "Identifier",
     "Literal",
@@ -52,5 +55,7 @@ const char *wordTypes[] = {
 void setWordType(Word *word)
 {
     char *value = word->value;
+
+    printf("%d\n", arrayIncludes(keywords, value));
 
 }
