@@ -59,3 +59,31 @@ int arrayIncludes(char **arr, char *str)
 
     return 0;
 }
+
+char *trimString(char *str, char trimmer)
+{
+    printf("string %s\n", str);
+
+    char *newStr = malloc((strlen(str) + 1) * sizeof(char));
+
+    size_t start, end;
+
+    for (start = 0; str[start] == trimmer; start++);
+
+    if (str[start] == '\0')
+    {
+        newStr[0] = '\0';
+        return newStr;
+    }
+
+    for (end = strlen(str) - 1; str[end] == trimmer; end--);
+
+    for (size_t i = start; i <= end; i++)
+    {
+        newStr[i - start] = str[i];
+
+        if (i == end) newStr[i - start + 1] = '\0';
+    }
+
+    return newStr;
+}

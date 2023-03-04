@@ -11,4 +11,6 @@ size_t getStringArraySize(char **strArray);
 
 int arrayIncludes(char **arr, char *str);
 
+char *trimString(char *str, char trimmer);
+
 #endif
