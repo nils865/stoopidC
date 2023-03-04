@@ -15,9 +15,10 @@ int main(int argc, char **argv)
 
     char *fileContent = loadFile(argv[1]);
     char **lines = stringToArray(fileContent, "\n");
-    outputStringArray(lines);
+
+    // outputStringArray(lines);
     // printf("%s\n", lexln(lines[0])[0].value);
-    // Word *words = lexln(lines[0]);
+    Word *words = lexln(lines[0]);
 
     return 0;
 }

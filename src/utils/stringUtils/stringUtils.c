@@ -5,13 +5,13 @@
 char **stringToArray(char *str, char splitter[1])
 {
     char *currentString;
-    char **strArray = NULL;
+    char **strArray = malloc(sizeof(char*));
 
     currentString = strtok(str, splitter);
 
     for (size_t i = 0; currentString != NULL; i++)
     {
-        strArray = (char**) realloc(strArray, (i + 1) * sizeof(char*));
+        strArray = (char**) realloc(strArray, (i + 2) * sizeof(char*));
         strArray[i] = (char*) malloc(strlen(currentString) + 1);
 
         strcpy(strArray[i], currentString);

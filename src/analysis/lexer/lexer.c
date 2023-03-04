@@ -2,11 +2,12 @@
 #include <stdlib.h>
 
 #include "lexer.h"
+#include "../../utils/stringUtils/stringUtils.h"
 
 Word *lexln(char *line)
 {
-    Word *words = malloc(sizeof(Word));
-    char *word = strtok(line, " ");
+    char **strWords = stringToArray(line, " ");
+    outputStringArray(strWords);
 
-    return words;
+    return NULL;
 }
