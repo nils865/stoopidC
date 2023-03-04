@@ -19,12 +19,29 @@ Word *lexln(char *line)
 
         strcat(currentWord, currentChar);
         char *type = getWordType(trimString(currentWord, ' '));
+        char *value = trimString(currentWord, ' ');
 
         if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
-            continue;
+        {
+            int found = 0;
+
+            for (size_t j = 0; j < strlen(currentWord); j++)
+            {
+                type = getWordType(trimString(currentWord + j, ' '));
+
+                if (strcmp(type, "NONE") != 0)
+                {
+                    value = trimString(currentWord + j , ' ');
+                    found = 1;
+                    break;
+                }
+            }
+
+            if (found == 0) continue;
+        }
 
         Word word;
-        word.value = trimString(currentWord, ' ');
+        word.value = value;
         word.type = type;
         words[i] = word;
 
