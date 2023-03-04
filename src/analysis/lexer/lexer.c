@@ -34,5 +34,7 @@ Word *lexln(char *line)
         currentWord[0] = '\0';
     }
 
+    free(currentWord);
+
     return words;
 }
