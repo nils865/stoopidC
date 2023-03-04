@@ -1,6 +1,6 @@
 #ifndef VALIDATION_H
 #define VALIDATION_H
 
-void setWordType(Word *word);
+char *getWordType(char *value);
 
 #endif

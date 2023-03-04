@@ -52,28 +52,26 @@ char *wordTypes[] = {
     "Comment"
 };
 
-void setWordType(Word *word)
+char *getWordType(char *value)
 {
-    char *value = word->value;
-
     if (arrayIncludes(keywords, value))
     {
-        word->type = wordTypes[0];
+        return wordTypes[0];
     }
     else if (arrayIncludes(operators, value))
     {
-        word->type = wordTypes[3];
+        return wordTypes[3];
     }
     else if (arrayIncludes(punctuations, value))
     {
-        word->type = wordTypes[4];
+        return wordTypes[4];
     }
     else if (arrayIncludes(comments, value))
     {
-        word->type = wordTypes[5];
+        return wordTypes[5];
     }
     else
     {
-        word->type = "NONE";
+        return "NONE";
     }
 }
