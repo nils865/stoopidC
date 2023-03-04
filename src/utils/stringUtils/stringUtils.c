@@ -62,8 +62,6 @@ int arrayIncludes(char **arr, char *str)
 
 char *trimString(char *str, char trimmer)
 {
-    printf("string %s\n", str);
-
     char *newStr = malloc((strlen(str) + 1) * sizeof(char));
 
     size_t start, end;

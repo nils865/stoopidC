@@ -18,18 +18,17 @@ Word *lexln(char *line)
         char currentChar[] = { line[i], '\0' };
 
         strcat(currentWord, currentChar);
-        char *type = getWordType(currentWord);
+        char *type = getWordType(trimString(currentWord, ' '));
 
         if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
             continue;
 
-        Word *word = malloc(sizeof(Word));
-        word->value = currentWord;
-        word->type = type;
+        Word word;
+        word.value = trimString(currentWord, ' ');
+        word.type = type;
+        words[i] = word;
 
-        printf("%s | %s\n", word->value, word->type);
-
-        words[i] = *word;
+        printf("%s | %s\n", word.value, word.type);
 
         currentWord = malloc((strlen(line) + 1) * sizeof(char));
         currentWord[0] = '\0';
