@@ -1,7 +1,7 @@
 #ifndef STRING_UTILS_H
 #define STRING_UTILS_H
 
-char **stringToArray(char *str);
+char **stringToArray(char *str, char splitter[1]);
 
 void outputStringArray(char *arr[]);
 

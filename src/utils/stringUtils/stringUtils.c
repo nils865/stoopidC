@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
-char **stringToArray(char *str)
+char **stringToArray(char *str, char splitter[1])
 {
     char *currentString;
     char **strArray = NULL;
 
-    currentString = strtok(str, "\n");
+    currentString = strtok(str, splitter);
 
     for (size_t i = 0; currentString != NULL; i++)
     {
@@ -16,7 +16,7 @@ char **stringToArray(char *str)
 
         strcpy(strArray[i], currentString);
 
-        currentString = strtok(NULL, "\n");
+        currentString = strtok(NULL, splitter);
 
         if (currentString == NULL)
         {
