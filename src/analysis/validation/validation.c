@@ -56,6 +56,24 @@ void setWordType(Word *word)
 {
     char *value = word->value;
 
-    printf("%d\n", arrayIncludes(keywords, value));
-
+    if (arrayIncludes(keywords, value))
+    {
+        word->type = wordTypes[0];
+    }
+    else if (arrayIncludes(operators, value))
+    {
+        word->type = wordTypes[3];
+    }
+    else if (arrayIncludes(punctuations, value))
+    {
+        word->type = wordTypes[4];
+    }
+    else if (arrayIncludes(comments, value))
+    {
+        word->type = wordTypes[5];
+    }
+    else
+    {
+        word->type = "NONE";
+    }
 }
