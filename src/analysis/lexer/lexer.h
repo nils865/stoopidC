@@ -1,3 +1,6 @@
+#ifndef LEXER_H
+#define LEXER_H
+
 typedef struct
 {
     char *type;
@@ -5,3 +8,5 @@ typedef struct
 } Word;
 
 Word *lexln(char *line);
+
+#endif
