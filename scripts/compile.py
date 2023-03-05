@@ -13,7 +13,15 @@ import hashlib, os, json, subprocess, sys, time
 
 start_time = time.perf_counter()
 
-if "--no-col" in sys.argv:
+MODE = sys.argv[1]
+COMPILER = sys.argv[2]
+
+if len(sys.argv) < 4:
+    COL_MODE = ""
+else:
+    COL_MODE = sys.argv[3]
+
+if "--no-col" == COL_MODE:
     COL_RESET = ""
     COL_GREEN = ""
 else:
@@ -57,11 +65,11 @@ for f in filelist:
     
 def compile(name):
     print(f'Compiling {COL_GREEN + name + COL_RESET}')
-    p = subprocess.Popen(["gcc", "-Wall", "-c", os.path.join("..", name)], cwd=os.path.join("bin"))
+    p = subprocess.Popen([COMPILER, "-Wall", "-c", os.path.join("..", name)], cwd=os.path.join("bin"))
     print(f'finished compiling {COL_GREEN + name + COL_RESET}\n')
 
 # compare filehashes and compile if needed
-if "smart" in sys.argv:
+if "smart" == MODE:
     if os.path.isfile(os.path.join("bin", "hashlist.json")):
         with open(os.path.join("bin", "hashlist.json"), "r") as f:
             oldhashlist = json.load(f)
@@ -76,7 +84,7 @@ if "smart" in sys.argv:
         for n in hashlist:
             compile(n)
             
-elif "all" in sys.argv:
+elif "all" == MODE:
     for n in hashlist:
         compile(n)
 else:
@@ -93,7 +101,7 @@ if not os.path.isdir(os.path.join("build")):
 print("--------------------------------\n")
 print(f'Compiling Executable in {COL_GREEN + os.path.join("build") + COL_RESET} as {COL_GREEN}stoopid{COL_RESET}')
 
-os.system(f'gcc -o {os.path.join("build", "stoopid")} {os.path.join("bin", "*.o")}')
+os.system(f'{COMPILER} -o {os.path.join("build", "stoopid")} {os.path.join("bin", "*.o")}')
 
 print(f'Finished compiling executable at {COL_GREEN + os.path.join("build", "stoopid") + COL_RESET}')
 
