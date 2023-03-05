@@ -4,6 +4,7 @@
 
 #include "../wordComponent/wordComponent.h"
 #include "../validation/validation.h"
+#include "../sentenceComponent/sentenceComponent.h"
 #include "../../utils/stringUtils/stringUtils.h"
 
 Word lexInWord(char *currentWord)
@@ -51,7 +52,7 @@ Word lexPreviousWord(char *currentWord, char *suffix)
     return w;
 }
 
-Word *lexln(char *line)
+Sentence lexln(char *line)
 {
     Word *words = malloc((strlen(line) + 1) * sizeof(Word));
     int wordCount = 0;
@@ -104,5 +105,7 @@ Word *lexln(char *line)
 
     free(currentWord);
 
-    return words;
+    Sentence sentence = wordsToSentence(words);
+
+    return sentence;
 }

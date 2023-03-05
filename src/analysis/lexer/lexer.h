@@ -1,8 +1,8 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-#include "../wordComponent/wordComponent.h"
+#include "../sentenceComponent/sentenceComponent.h"
 
-Word *lexln(char *line);
+Sentence lexln(char *line);
 
 #endif

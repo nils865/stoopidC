@@ -7,8 +7,6 @@ Sentence wordsToSentence(Word *words)
     Sentence sentence;
     sentence.words = words;
 
-    printf("%s\n", sentence.words[0].value);
-
     for ((sentence.length = 0); (words[sentence.length].value != NULL); (sentence.length++));
 
     return sentence;

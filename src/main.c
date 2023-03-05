@@ -23,17 +23,13 @@ int main(int argc, char **argv)
     {
         printf("\nLexing line: %s\n\n", lines[i]);
 
-        Word *line = lexln(lines[i]);
+        Sentence line = lexln(lines[i]);
 
-        if (line[0].value == NULL)
+        if (line.words[0].value == NULL)
             continue;
 
-        Sentence sentence = wordsToSentence(line);
-
-        outputSentence(sentence);
-        parseStatement(sentence);
-
-        free(line);
+        outputSentence(line);
+        parseStatement(line);
     }
 
     free(lines);
