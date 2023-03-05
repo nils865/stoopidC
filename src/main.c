@@ -5,6 +5,7 @@
 #include "utils/stringArrayUtils/stringArrayUtils.h"
 #include "analysis/lexer/lexer.h"
 #include "analysis/wordComponent/wordComponent.h"
+#include "analysis/parser/parser.h"
 
 int main(int argc, char **argv)
 {
@@ -31,6 +32,8 @@ int main(int argc, char **argv)
         {
             printf("Word: %s | Type: %s\n", currentWord.value, currentWord.type);
         }
+
+        parseStatement(line);
 
         free(line);
     }
