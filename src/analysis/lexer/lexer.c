@@ -14,7 +14,7 @@ Word lexInWord(char *currentWord)
     {
         word.type = getWordType(trimString(currentWord + i, ' '));
 
-        if (strcmp(word.type, "NONE") != 0)
+        if (strcmp(word.type, wordTypes[6]) != 0)
         {
             word.value = trimString(currentWord + i, ' ');
             return word;
@@ -73,10 +73,10 @@ Word *lexln(char *line)
 
         if (i != strlen(line) - 1)
         {
-            if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
+            if (strcmp(type, wordTypes[6]) == 0 && i != strlen(line) - 1)
             {
                 word = lexInWord(currentWord);
-                if (strcmp(word.type, "NONE") == 0) continue;
+                if (strcmp(word.type, wordTypes[6]) == 0) continue;
 
                 words[wordCount] = lexPreviousWord(currentWord, word.value);
                 wordCount++;

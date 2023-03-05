@@ -53,6 +53,7 @@ char *wordTypes[] = {
     "Operator",
     "Punctuation",
     "Comment",
+    "NONE",
     NULL
 };
 
@@ -67,7 +68,7 @@ char *getWordType(char *value)
     else if (arrayIncludes(comments, value))
         return wordTypes[5];
     else
-        return "NONE";
+        return wordTypes[6];
 }
 
 Word validateComment(Word commentPrefix, char *comment)
