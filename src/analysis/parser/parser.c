@@ -1,16 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
 #include "../wordComponent/wordComponent.h"
 #include "../validation/validation.h"
+
+#include "../../keywords/kw_arr/kw_arr.h"
+#include "../../keywords/kw_end/kw_end.h"
+#include "../../keywords/kw_exit/kw_exit.h"
+#include "../../keywords/kw_goif/kw_goif.h"
+#include "../../keywords/kw_goto/kw_goto.h"
+#include "../../keywords/kw_if/kw_if.h"
+#include "../../keywords/kw_out/kw_out.h"
+#include "../../keywords/kw_sleep/kw_sleep.h"
+#include "../../keywords/kw_var/kw_var.h"
 
 void parseStatement(Word *statement)
 {
     // TODO implement Parser
     if (strcmp(statement[0].type, "Keyword") == 0)
     {
-        Word keyword = statement[0];
+        char *keyword = statement[0].value;
 
         int output = 0;
 
-        if (strmp(keyword, keywords[0]) == 0)
+        if (strcmp(keyword, keywords[0]) == 0)
         {
             output = kw_var_grammar(statement);
         }
@@ -47,6 +60,12 @@ void parseStatement(Word *statement)
             output = kw_exit_grammar(statement);
         }
         else
+        {
+            // FIXME Implement error handling
+            printf("ERROR\n");
+        }
+
+        if (output == 0)
         {
             // FIXME Implement error handling
             printf("ERROR\n");
