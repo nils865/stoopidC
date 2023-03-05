@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "lexer.h"
+#include "../wordComponent/wordComponent.h"
 #include "../validation/validation.h"
 #include "../../utils/stringUtils/stringUtils.h"
 

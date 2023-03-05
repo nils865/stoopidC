@@ -4,6 +4,7 @@
 #include "utils/fileHandling/fileHandling.h"
 #include "utils/stringArrayUtils/stringArrayUtils.h"
 #include "analysis/lexer/lexer.h"
+#include "analysis/wordComponent/wordComponent.h"
 
 int main(int argc, char **argv)
 {

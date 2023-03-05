@@ -1,7 +1,7 @@
 #ifndef VALIDATION_H
 #define VALIDATION_H
 
-#include "../lexer/lexer.h"
+#include "../wordComponent/wordComponent.h"
 
 char *getWordType(char *value);
 

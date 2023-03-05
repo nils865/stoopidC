@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../lexer/lexer.h"
+#include "../wordComponent/wordComponent.h"
 #include "../../utils/stringArrayUtils/stringArrayUtils.h"
 
 char *keywords[] = {
