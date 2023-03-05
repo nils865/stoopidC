@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "utils/fileHandling/fileHandling.h"
-#include "utils/stringUtils/stringUtils.h"
 #include "utils/stringArrayUtils/stringArrayUtils.h"
 #include "analysis/lexer/lexer.h"
 
@@ -21,8 +20,6 @@ int main(int argc, char **argv)
     {
         Word *line = lexln(lines[i]);
     }
-
-    printf("Reverse: %s\n", reverseString("Hello World!"));
 
     free(lines);
     free(fileContent);
