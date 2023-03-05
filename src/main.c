@@ -3,6 +3,7 @@
 
 #include "utils/fileHandling/fileHandling.h"
 #include "utils/stringUtils/stringUtils.h"
+#include "utils/stringArrayUtils/stringArrayUtils.h"
 #include "analysis/lexer/lexer.h"
 
 int main(int argc, char **argv)
