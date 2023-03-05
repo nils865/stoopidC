@@ -27,11 +27,36 @@ Word lexInWord(char *currentWord)
     return word;
 }
 
+Word lexPreviousWord(char *currentWord, char *suffix)
+{
+    char *currentWordReversed = reverseString(currentWord);
+    char *suffixReversed = reverseString(suffix);
+
+    Word w = { NULL, NULL };
+
+    if (strncmp(currentWordReversed, suffixReversed, strlen(suffixReversed)) == 0)
+    {
+        char *value = malloc((strlen(currentWord) - strlen(suffix) + 1) * sizeof(char));
+        strncpy(value, currentWord, strlen(currentWord) - strlen(suffix));
+
+        w.type = getWordType(trimString(value, ' '));
+        w.value = trimString(value, ' ');
+
+        free(value);
+    }
+
+    free(currentWordReversed);
+    free(suffixReversed);
+
+    return w;
+}
+
 Word *lexln(char *line)
 {
     printf("\nLexing line: %s\n\n", line);
 
     Word *words = malloc((strlen(line) + 1) * sizeof(Word));
+    int wordCount = 0;
 
     char *currentWord = malloc((strlen(line) + 1) * sizeof(char));
     currentWord[0] = '\0';
@@ -47,19 +72,26 @@ Word *lexln(char *line)
         Word word;
         word.value = value;
         word.type = type;
-        words[i] = word;
 
         if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
         {
             word = lexInWord(currentWord);
             if (strcmp(word.type, "NONE") == 0) continue;
+
+            words[wordCount] = lexPreviousWord(currentWord, word.value);
+            wordCount++;
         }
 
-        printf("%s | %s\n", word.value, word.type);
+        words[wordCount] = word;
+        wordCount++;
+
+        // printf("%s | %s\n", word.value, word.type);
 
         currentWord = malloc((strlen(line) + 1) * sizeof(char));
         currentWord[0] = '\0';
     }
+
+    words[wordCount] = (Word) { NULL, NULL };
 
     free(currentWord);
 

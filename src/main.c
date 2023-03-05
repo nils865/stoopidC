@@ -19,6 +19,13 @@ int main(int argc, char **argv)
     for (size_t i = 0; i < getStringArraySize(lines); i++)
     {
         Word *line = lexln(lines[i]);
+
+        Word currentWord;
+
+        for (size_t j = 0; ((currentWord = line[j]).value != NULL); j++)
+        {
+            printf("Word: %s | Type: %s\n", currentWord.value, currentWord.type);
+        }
     }
 
     free(lines);
