@@ -90,6 +90,10 @@ elif "all" == MODE:
 else:
     print("Error")
     exit(0)
+    
+# if on windows
+if os.name == "nt":
+    os.system(f'windres .rc -o {os.path.join("bin", "project_data.o")}')
             
 # save file hash in file
 with open(os.path.join("bin", "hashlist.json"), 'w') as f:
