@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "../lexer/lexer.h"
 #include "../../utils/stringArrayUtils/stringArrayUtils.h"
@@ -12,7 +13,8 @@ char *keywords[] = {
     "goif",
     "if",
     "end",
-    "exit"
+    "exit",
+    NULL
 };
 
 char *operators[] = {
@@ -28,17 +30,20 @@ char *operators[] = {
     "<",
     "&",
     "|",
+    NULL
 };
 
 char *punctuations[] = {
     ":",
     "(",
     ")",
-    "\""
+    "\"",
+    NULL
 };
 
 char *comments[] = {
-    "#"
+    "#",
+    NULL
 };
 
 char *wordTypes[] = {
@@ -47,7 +52,8 @@ char *wordTypes[] = {
     "Literal",
     "Operator",
     "Punctuation",
-    "Comment"
+    "Comment",
+    NULL
 };
 
 char *getWordType(char *value)
