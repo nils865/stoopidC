@@ -69,3 +69,21 @@ char *getWordType(char *value)
     else
         return "NONE";
 }
+
+Word validateComment(Word commentPrefix, char *comment)
+{
+    if (arrayIncludes(comments, commentPrefix.value) == 0)
+        return (Word) { NULL, NULL };
+    else
+    {
+        Word w;
+
+        w.type = wordTypes[5];
+
+        w.value = malloc((strlen(comment) + strlen(commentPrefix.value)) * sizeof(char));
+        w.value = strcpy(w.value, commentPrefix.value);
+        w.value = strcat(w.value, comment);
+
+        return w;
+    }
+}

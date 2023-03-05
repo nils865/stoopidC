@@ -73,19 +73,30 @@ Word *lexln(char *line)
         word.value = value;
         word.type = type;
 
-        if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
+        if (i != strlen(line) - 1)
         {
-            word = lexInWord(currentWord);
-            if (strcmp(word.type, "NONE") == 0) continue;
+            if (strcmp(type, "NONE") == 0 && i != strlen(line) - 1)
+            {
+                word = lexInWord(currentWord);
+                if (strcmp(word.type, "NONE") == 0) continue;
 
-            words[wordCount] = lexPreviousWord(currentWord, word.value);
-            wordCount++;
+                words[wordCount] = lexPreviousWord(currentWord, word.value);
+                wordCount++;
+            }
+        }
+        else
+        {
+            Word newWord = validateComment(words[wordCount - 1], currentWord);
+
+            if (newWord.value != NULL)
+            {
+                words[wordCount - 1] = newWord;
+                continue;
+            }
         }
 
         words[wordCount] = word;
         wordCount++;
-
-        // printf("%s | %s\n", word.value, word.type);
 
         currentWord = malloc((strlen(line) + 1) * sizeof(char));
         currentWord[0] = '\0';
