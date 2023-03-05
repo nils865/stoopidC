@@ -59,23 +59,13 @@ char *wordTypes[] = {
 char *getWordType(char *value)
 {
     if (arrayIncludes(keywords, value))
-    {
         return wordTypes[0];
-    }
     else if (arrayIncludes(operators, value))
-    {
         return wordTypes[3];
-    }
     else if (arrayIncludes(punctuations, value))
-    {
         return wordTypes[4];
-    }
     else if (arrayIncludes(comments, value))
-    {
         return wordTypes[5];
-    }
     else
-    {
         return "NONE";
-    }
 }
