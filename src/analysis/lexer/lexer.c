@@ -90,7 +90,7 @@ Word *lexln(char *line)
 
             if (newWord.value != NULL)
             {
-                words[wordCount - 1] = newWord;
+                wordCount--;
                 continue;
             }
         }
