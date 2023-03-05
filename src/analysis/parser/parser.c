@@ -13,12 +13,13 @@
 #include "../../keywords/kw_out/kw_out.h"
 #include "../../keywords/kw_sleep/kw_sleep.h"
 #include "../../keywords/kw_var/kw_var.h"
+#include "../sentenceComponent/sentenceComponent.h"
 
-void parseStatement(Word *statement)
+void parseStatement(Sentence statement)
 {
-    if (strcmp(statement[0].type, "Keyword") == 0)
+    if (strcmp(statement.words[0].type, "Keyword") == 0)
     {
-        char *keyword = statement[0].value;
+        char *keyword = statement.words[0].value;
 
         int output = 0;
 

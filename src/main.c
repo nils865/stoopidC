@@ -6,6 +6,7 @@
 #include "analysis/lexer/lexer.h"
 #include "analysis/wordComponent/wordComponent.h"
 #include "analysis/parser/parser.h"
+#include "analysis/sentenceComponent/sentenceComponent.h"
 
 int main(int argc, char **argv)
 {
@@ -27,13 +28,10 @@ int main(int argc, char **argv)
         if (line[0].value == NULL)
             continue;
 
-        Word currentWord;
-        for (size_t j = 0; ((currentWord = line[j]).value != NULL); j++)
-        {
-            printf("Word: %s | Type: %s\n", currentWord.value, currentWord.type);
-        }
+        Sentence sentence = wordsToSentence(line);
 
-        parseStatement(line);
+        outputSentence(sentence);
+        parseStatement(sentence);
 
         free(line);
     }

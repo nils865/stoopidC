@@ -1,8 +1,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "../wordComponent/wordComponent.h"
+#include "../sentenceComponent/sentenceComponent.h"
 
-void parseStatement(Word *statement);
+void parseStatement(Sentence statement);
 
 #endif

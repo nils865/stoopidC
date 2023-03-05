@@ -1,8 +1,8 @@
 #ifndef KW_ARR_H
 #define KW_ARR_H
 
-#include "../../analysis/validation/validation.h"
+#include "../../analysis/sentenceComponent/sentenceComponent.h"
 
-int kw_arr_grammar(Word *statement);
+int kw_arr_grammar(Sentence statement);
 
 #endif

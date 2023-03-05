@@ -1,6 +1,6 @@
-#include "../../analysis/validation/validation.h"
+#include "../../analysis/sentenceComponent/sentenceComponent.h"
 
-int kw_goif_grammar(Word *statement)
+int kw_goif_grammar(Sentence statement)
 {
     return 0;
 }
