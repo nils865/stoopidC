@@ -53,8 +53,6 @@ Word lexPreviousWord(char *currentWord, char *suffix)
 
 Word *lexln(char *line)
 {
-    printf("\nLexing line: %s\n\n", line);
-
     Word *words = malloc((strlen(line) + 1) * sizeof(Word));
     int wordCount = 0;
 

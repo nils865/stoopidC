@@ -18,14 +18,20 @@ int main(int argc, char **argv)
 
     for (size_t i = 0; i < getStringArraySize(lines); i++)
     {
+        printf("\nLexing line: %s\n\n", lines[i]);
+
         Word *line = lexln(lines[i]);
 
-        Word currentWord;
+        if (line[0].value == NULL)
+            continue;
 
+        Word currentWord;
         for (size_t j = 0; ((currentWord = line[j]).value != NULL); j++)
         {
             printf("Word: %s | Type: %s\n", currentWord.value, currentWord.type);
         }
+
+        free(line);
     }
 
     free(lines);
