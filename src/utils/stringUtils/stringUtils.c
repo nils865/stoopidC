@@ -85,3 +85,18 @@ char *trimString(char *str, char trimmer)
 
     return newStr;
 }
+
+char *reverseString(char *str)
+{
+    char *newStr = malloc((strlen(str) + 1) * sizeof(char));
+    newStr[0] = '\0';
+
+    for (int i = strlen(str) - 1; i >= 0; i--)
+    {
+        newStr[strlen(str) - i - 1] = str[i];
+
+        if (i == 0) newStr[strlen(str)] = '\0';
+    }
+
+    return newStr;
+}

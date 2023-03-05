@@ -21,6 +21,8 @@ int main(int argc, char **argv)
         Word *line = lexln(lines[i]);
     }
 
+    printf("Reverse: %s\n", reverseString("Hello World!"));
+
     free(lines);
     free(fileContent);
 

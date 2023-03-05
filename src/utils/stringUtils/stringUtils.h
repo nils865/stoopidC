@@ -13,4 +13,6 @@ int arrayIncludes(char **arr, char *str);
 
 char *trimString(char *str, char trimmer);
 
+char *reverseString(char *str);
+
 #endif
