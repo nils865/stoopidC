@@ -4,6 +4,7 @@
 #include "utils/fileHandling/fileHandling.h"
 #include "utils/stringArrayUtils/stringArrayUtils.h"
 #include "analysis/lexer/lexer.h"
+#include "analysis/lexLiterals/lexLiterals.h"
 #include "analysis/wordComponent/wordComponent.h"
 #include "analysis/parser/parser.h"
 #include "analysis/sentenceComponent/sentenceComponent.h"
@@ -28,8 +29,10 @@ int main(int argc, char **argv)
         if (line.words[0].value == NULL)
             continue;
 
-        outputSentence(line);
-        parseStatement(line);
+        Sentence line2 = lexLiterals(line);
+
+        outputSentence(line2);
+        parseStatement(line2);
     }
 
     free(lines);
