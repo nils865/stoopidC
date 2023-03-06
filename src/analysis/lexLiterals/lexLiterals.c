@@ -5,6 +5,33 @@
 #include "../sentenceComponent/sentenceComponent.h"
 #include "../validation/validation.h"
 
+void literalString(Sentence *statement, size_t *i, Word **words, size_t *wordLen)
+{
+    Word newWord;
+    newWord.type = wordTypes[2];
+
+    size_t size = strlen(statement->words[*i].value) * sizeof(char);
+    newWord.value = malloc(size);
+    strcpy(newWord.value, statement->words[*i].value);
+
+    printf("%s\n", newWord.value);
+
+    *i += 1;
+
+    while (*i < statement->length)
+    {
+        newWord.value = realloc(newWord.value, size += (strlen(statement->words[*i].value) * sizeof(char)));
+        strcat(newWord.value, statement->words[*i].value);
+
+        if (strcmp(statement->words[*i].value, "\"") == 0)
+            break;
+
+        *i += 1;
+    }
+
+    (*words)[*wordLen] = newWord;
+}
+
 Sentence lexLiterals(Sentence statement)
 {
     Word *words = malloc(sizeof(Word) * (statement.length + 1));
@@ -14,31 +41,7 @@ Sentence lexLiterals(Sentence statement)
     {
         if (strcmp(statement.words[i].type, wordTypes[4]) == 0 && strcmp(statement.words[i].value, "\"") == 0)
         {
-            Word newWord;
-            newWord.type = wordTypes[2];
-
-            size_t size = strlen(statement.words[i].value) * sizeof(char);
-            newWord.value = malloc(size);
-            strcpy(newWord.value, statement.words[i].value);
-
-
-            i++;
-
-            while (i < statement.length)
-            {
-                newWord.value = realloc(newWord.value, size += (strlen(statement.words[i].value) * sizeof(char)));
-                strcat(newWord.value, statement.words[i].value);
-
-                if (strcmp(statement.words[i].value, "\"") == 0)
-                {
-                    break;
-                }
-
-                i++;
-            }
-
-            words[wordLen] = newWord;
-            free(newWord.value);
+            literalString(&statement, &i, &words, &wordLen);
             continue;
         }
 
