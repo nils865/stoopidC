@@ -16,4 +16,6 @@ out : "bool Test: " + boolTest
 
 out : !boolTest && c == 100
 
+var : d = 12.32
+
 # cool comment
