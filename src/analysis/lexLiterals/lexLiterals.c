@@ -17,7 +17,6 @@ Sentence lexLiterals(Sentence statement)
             Word newWord;
             newWord.type = wordTypes[2];
 
-            printf("Found literal \'\"\' at: %lld\n", i);
             size_t size = strlen(statement.words[i].value) * sizeof(char);
             newWord.value = malloc(size);
             strcpy(newWord.value, statement.words[i].value);
@@ -27,7 +26,7 @@ Sentence lexLiterals(Sentence statement)
 
             while (i < statement.length)
             {
-                newWord.value = realloc(newWord.value, size + (strlen(statement.words[i].value) * sizeof(char)));
+                newWord.value = realloc(newWord.value, size += (strlen(statement.words[i].value) * sizeof(char)));
                 strcat(newWord.value, statement.words[i].value);
 
                 if (strcmp(statement.words[i].value, "\"") == 0)
@@ -39,6 +38,7 @@ Sentence lexLiterals(Sentence statement)
             }
 
             words[wordLen] = newWord;
+            free(newWord.value);
             continue;
         }
 
@@ -48,7 +48,6 @@ Sentence lexLiterals(Sentence statement)
     words[wordLen] = (Word) {NULL, NULL};
 
     Sentence s = wordsToSentence(words);
-    printf("Original length %lld | New Length %lld\n", statement.length, s.length);
     
     return s;
 }

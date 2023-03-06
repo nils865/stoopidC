@@ -29,10 +29,10 @@ int main(int argc, char **argv)
         if (line.words[0].value == NULL)
             continue;
 
-        Sentence line2 = lexLiterals(line);
+        line = lexLiterals(line);
 
-        outputSentence(line2);
-        parseStatement(line2);
+        outputSentence(line);
+        parseStatement(line);
     }
 
     free(lines);
