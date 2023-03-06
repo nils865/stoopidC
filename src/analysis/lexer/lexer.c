@@ -5,6 +5,7 @@
 #include "../wordComponent/wordComponent.h"
 #include "../validation/validation.h"
 #include "../sentenceComponent/sentenceComponent.h"
+#include "../lexLiterals/lexLiterals.h"
 #include "../../utils/stringUtils/stringUtils.h"
 
 Word lexInWord(char *currentWord)
@@ -71,6 +72,14 @@ Sentence lexln(char *line)
         Word word;
         word.value = value;
         word.type = type;
+
+        if (strcmp(type, wordTypes[4]) == 0 && strcmp(value, "\"") == 0)
+        {
+            word = lexString(line, &i);
+            words[wordCount] = word;
+            wordCount++;
+            continue;
+        }
 
         if (i != strlen(line) - 1)
         {

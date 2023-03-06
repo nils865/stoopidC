@@ -18,7 +18,7 @@ void outputSentence(Sentence sentence)
 
     for (int i = 0; i < sentence.length; i++)
     {
-        printf("%s ", sentence.words[i].value);
+        printf("%s (%s) | ", sentence.words[i].value, sentence.words[i].type);
     }
 
     printf("\n");

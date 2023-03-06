@@ -5,6 +5,34 @@
 #include "../sentenceComponent/sentenceComponent.h"
 #include "../validation/validation.h"
 
+Word lexString(char *line, size_t *i)
+{
+    Word word;
+    word.type = wordTypes[2];
+
+    size_t size = strlen(line + *i) * sizeof(char);
+    word.value = malloc(size);
+    char currentChar[2] = { line[*i], '\0' };
+    strcpy(word.value, currentChar);
+    *i += 1;
+
+    while (*i < strlen(line))
+    {
+        currentChar[0] = line[*i];
+        word.value = realloc(word.value, size += sizeof(char));
+        strcat(word.value, currentChar);
+
+        if (strcmp(currentChar, "\"") == 0)
+            break;
+
+        *i += 1;
+    }
+
+    printf("Literal Word: %s\n", word.value);
+
+    return word;
+}
+
 void literalString(Sentence *statement, size_t *i, Word **words, size_t *wordLen)
 {
     Word newWord;
