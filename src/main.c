@@ -29,8 +29,6 @@ int main(int argc, char **argv)
         if (line.words[0].value == NULL)
             continue;
 
-        // line = lexLiterals(line);
-
         outputSentence(line);
         parseStatement(line);
     }
