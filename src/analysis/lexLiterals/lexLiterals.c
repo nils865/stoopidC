@@ -14,8 +14,6 @@ void literalString(Sentence *statement, size_t *i, Word **words, size_t *wordLen
     newWord.value = malloc(size);
     strcpy(newWord.value, statement->words[*i].value);
 
-    printf("%s\n", newWord.value);
-
     *i += 1;
 
     while (*i < statement->length)
