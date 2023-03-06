@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "sentenceComponent.h"
+#include "../../utils/color/color.h"
 
 Sentence wordsToSentence(Word *words)
 {
@@ -18,7 +19,7 @@ void outputSentence(Sentence sentence)
 
     for (int i = 0; i < sentence.length; i++)
     {
-        printf("%s (%s) | ", sentence.words[i].value, sentence.words[i].type);
+        printf(COLOR_CYAN "%s " COLOR_RED "(" COLOR_MAGENTA "%s" COLOR_RED ")" COLOR_RESET " | ", sentence.words[i].value, sentence.words[i].type);
     }
 
     printf("\n");
