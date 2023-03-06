@@ -38,6 +38,7 @@ char *punctuations[] = {
     "(",
     ")",
     "\"",
+    ".",
     NULL
 };
 
