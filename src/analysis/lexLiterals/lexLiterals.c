@@ -22,13 +22,11 @@ Word lexString(char *line, size_t *i)
         word.value = realloc(word.value, size += sizeof(char));
         strcat(word.value, currentChar);
 
+        *i += 1;
+
         if (strcmp(currentChar, "\"") == 0)
             break;
-
-        *i += 1;
     }
-
-    printf("Literal Word: %s\n", word.value);
 
     return word;
 }

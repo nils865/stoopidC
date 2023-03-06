@@ -74,14 +74,8 @@ Sentence lexln(char *line)
         word.type = type;
 
         if (strcmp(type, wordTypes[4]) == 0 && strcmp(value, "\"") == 0)
-        {
             word = lexString(line, &i);
-            words[wordCount] = word;
-            wordCount++;
-            continue;
-        }
-
-        if (i != strlen(line) - 1)
+        else if (i != strlen(line) - 1)
         {
             if (strcmp(type, wordTypes[6]) == 0 && i != strlen(line) - 1)
             {
