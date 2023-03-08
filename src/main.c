@@ -9,7 +9,7 @@
 #include "analysis/parser/parser.h"
 #include "analysis/sentenceComponent/sentenceComponent.h"
 #include "interpreter/interpreter.h"
-#include "variables/variableManager/variableManager.h"
+#include "interpreter/variableManager/variableManager.h"
 
 int main(int argc, char **argv)
 {
