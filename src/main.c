@@ -9,6 +9,7 @@
 #include "analysis/parser/parser.h"
 #include "analysis/sentenceComponent/sentenceComponent.h"
 #include "interpreter/interpreter.h"
+#include "variables/variableManager/variableManager.h"
 
 int main(int argc, char **argv)
 {
@@ -20,6 +21,8 @@ int main(int argc, char **argv)
 
     char *fileContent = loadFile(argv[1]);
     char **lines = stringToArray(fileContent, "\n");
+
+    initVariableManager();
 
     for (size_t i = 0; i < getStringArraySize(lines); i++)
     {
