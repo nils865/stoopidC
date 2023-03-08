@@ -3,6 +3,7 @@
 
 #include "utils/fileHandling/fileHandling.h"
 #include "utils/stringArrayUtils/stringArrayUtils.h"
+#include "utils/stack/stack.h"
 #include "analysis/lexer/lexer.h"
 #include "analysis/lexLiterals/lexLiterals.h"
 #include "analysis/wordComponent/wordComponent.h"

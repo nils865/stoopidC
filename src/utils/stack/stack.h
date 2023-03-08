@@ -15,4 +15,14 @@ typedef struct stack
     StackEntry *top;
 } Stack;
 
+Stack *stack_create();
+
+void stack_push(Stack *stack, char *value);
+
+char *stack_pop(Stack *stack);
+
+void stack_free(Stack *stack);
+
+int stack_isEmpty(Stack *stack);
+
 #endif
