@@ -13,7 +13,7 @@ int kw_goto_grammar(Sentence statement)
             return 1;
         else if (i == 2 && strcmp(statement.words[i].type, wordTypes[2]) != 0)
             return 1;
-        else if (i > 3)
+        else if (i > 2)
             return 1;
     }
 
