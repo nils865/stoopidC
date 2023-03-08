@@ -2,5 +2,5 @@
 
 int kw_arr_grammar(Sentence statement)
 {
-    return 0;
+    return 1;
 }
