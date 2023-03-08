@@ -82,19 +82,27 @@ Sentence lexln(char *line)
             {
                 word = lexInWord(currentWord);
                 if (strcmp(word.type, wordTypes[6]) == 0) continue;
+                int addPreviousWord = 1;
 
                 Word previousWord = lexPreviousWord(currentWord, word.value);
 
                 if (strcmp(previousWord.type, wordTypes[6]) == 0 && isNumber(previousWord.value))
                 {
                     if (strcmp(word.type, wordTypes[4]) == 0 && strcmp(word.value, punctuations[4]) == 0)
-                        lexFloat();
+                    {
+                        word = lexFloat(&previousWord, &word, line, &i);
+                        addPreviousWord = 0;
+                    }
                     else
                         lexInt(&previousWord);
                 }
 
-                words[wordCount] = previousWord;
-                wordCount++;
+
+                if (addPreviousWord)
+                {
+                    words[wordCount] = previousWord;
+                    wordCount++;
+                }
             }
         }
         else
@@ -107,9 +115,7 @@ Sentence lexln(char *line)
                 continue;
             }
             else if (strcmp(word.type, wordTypes[6]) == 0 && isNumber(word.value))
-            {
                 lexInt(&word);
-            }
         }
 
         words[wordCount] = word;
