@@ -4,5 +4,7 @@
 #include "../wordComponent/wordComponent.h"
 
 Word lexString(char *line, size_t *i);
+void lexInt(Word *word);
+Word lexFloat();
 
 #endif

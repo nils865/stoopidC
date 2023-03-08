@@ -29,3 +29,16 @@ Word lexString(char *line, size_t *i)
 
     return word;
 }
+
+void lexInt(Word *word)
+{
+    word->type = wordTypes[2];
+}
+
+Word lexFloat()
+{
+    Word word;
+    word.type = wordTypes[2];
+
+    return word;
+}

@@ -7,6 +7,7 @@
 #include "../sentenceComponent/sentenceComponent.h"
 #include "../lexLiterals/lexLiterals.h"
 #include "../../utils/stringUtils/stringUtils.h"
+#include "../../types/stpdNumber/stpdNumber.h"
 
 Word lexInWord(char *currentWord)
 {
@@ -82,7 +83,17 @@ Sentence lexln(char *line)
                 word = lexInWord(currentWord);
                 if (strcmp(word.type, wordTypes[6]) == 0) continue;
 
-                words[wordCount] = lexPreviousWord(currentWord, word.value);
+                Word previousWord = lexPreviousWord(currentWord, word.value);
+
+                if (strcmp(previousWord.type, wordTypes[6]) == 0 && isNumber(previousWord.value))
+                {
+                    if (strcmp(word.type, wordTypes[4]) == 0 && strcmp(word.value, punctuations[4]) == 0)
+                        lexFloat();
+                    else
+                        lexInt(&previousWord);
+                }
+
+                words[wordCount] = previousWord;
                 wordCount++;
             }
         }
@@ -94,6 +105,10 @@ Sentence lexln(char *line)
             {
                 wordCount--;
                 continue;
+            }
+            else if (strcmp(word.type, wordTypes[6]) == 0 && isNumber(word.value))
+            {
+                lexInt(&word);
             }
         }
 
