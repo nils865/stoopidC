@@ -8,6 +8,7 @@
 #include "analysis/wordComponent/wordComponent.h"
 #include "analysis/parser/parser.h"
 #include "analysis/sentenceComponent/sentenceComponent.h"
+#include "interpreter/interpreter.h"
 
 int main(int argc, char **argv)
 {
@@ -31,6 +32,7 @@ int main(int argc, char **argv)
 
         outputSentence(line);
         parseStatement(line);
+        interpretln(line);
     }
 
     free(lines);
