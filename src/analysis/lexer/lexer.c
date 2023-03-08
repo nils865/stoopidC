@@ -8,6 +8,7 @@
 #include "../lexLiterals/lexLiterals.h"
 #include "../../utils/stringUtils/stringUtils.h"
 #include "../../types/stpdNumber/stpdNumber.h"
+#include "../../types/stpdBool/stpdBool.h"
 
 Word lexInWord(char *currentWord)
 {
@@ -100,6 +101,9 @@ Sentence lexln(char *line)
 
                 if (addPreviousWord)
                 {
+                    if (strcmp(previousWord.type, wordTypes[6]) == 0 && isBool(previousWord.value))
+                        previousWord.type = wordTypes[2];
+                    
                     words[wordCount] = previousWord;
                     wordCount++;
                 }
@@ -114,8 +118,13 @@ Sentence lexln(char *line)
                 wordCount--;
                 continue;
             }
-            else if (strcmp(word.type, wordTypes[6]) == 0 && isNumber(word.value))
-                lexInt(&word);
+            else if (strcmp(word.type, wordTypes[6]) == 0)
+            {
+                if (isNumber(word.value))
+                    lexInt(&word);
+                else if (isBool(word.value))
+                    word.type = wordTypes[2];
+            }
         }
 
         words[wordCount] = word;
