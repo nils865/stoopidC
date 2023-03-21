@@ -95,7 +95,8 @@ else:
 if os.name == "nt":
     os.system(f'windres .rc -o {os.path.join("bin", "project_data.o")}')
 else:
-    os.system(f'objcopy --input binary --output elf32-i386 --binary-architecture i386 icon.ico {os.path.join("bin", "project_data.o")}')
+    print("User is on Linux")
+    # os.system(f'objcopy --input binary --output elf32-i386 --binary-architecture i386 icon.ico {os.path.join("bin", "project_data.o")}')
             
 # save file hash in file
 with open(os.path.join("bin", "hashlist.json"), 'w') as f:

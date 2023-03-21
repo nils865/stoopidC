@@ -15,7 +15,7 @@ Sentence wordsToSentence(Word *words)
 
 void outputSentence(Sentence sentence)
 {
-    printf("Sentence length: %lld\n", sentence.length);
+    printf("Sentence length: %ld\n", sentence.length);
 
     for (int i = 0; i < sentence.length; i++)
     {
