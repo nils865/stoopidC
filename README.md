@@ -5,6 +5,26 @@ The stoopid programing language rewritten in C
 
 ---
 
+## Roadmap
+
+### Rewrite Roadmap
+
+- [X] **Lexer** to divide Words into Categries
+- [X] **Parser** for validating Grammar of Statements
+- [ ] Implement System for **Variables**
+- [ ] Implement a **Reverse Polish Notation** Calculator
+- [ ] Universal **Calculator** for Numbers, Strings and Bools
+- [ ] **Complete the Rewrite**
+- [ ] Add a **simple creation tool** for **new keywords**
+- [ ] Finally Merge with Main
+
+### Future
+
+- [ ] Add functionality of Python Stoopid
+- [ ] Finish the language for 1.0 Build
+
+---
+
 ## How to Use
 
 You can use the interpreter by running the command `stoopid <filename>`
