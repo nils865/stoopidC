@@ -49,6 +49,8 @@ NOTE: mingw comes with make, its just named mingw32-make, so if you are using mi
 
 ## Guide
 
+### ⚠️ WARNING this Guide is outdated for this Version of the Branch, Proper Guide will follow before Merge with Main
+
 | Keyword | Description | Syntax |
 | ------- | ----------- | ------ |
 | var | Defines a variable | `var : <name> = <value>` |
