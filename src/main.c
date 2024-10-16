@@ -16,6 +16,10 @@ int main(int argc, char* argv[]) {
 
     }
 
+    if (filename == NULL) {
+        return 1;
+    }
+
     printf("%s\n", filename);
 
     return 0;
