@@ -1,8 +1,6 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    printf("Hello World\n");
-
     char* filename;
 
     for (int i = 1; i < argc; i++) {
@@ -13,14 +11,13 @@ int main(int argc, char* argv[]) {
         } else {
             filename = arg;
         }
-
     }
 
     if (filename == NULL) {
         return 1;
     }
 
-    printf("%s\n", filename);
+    printf("Filename: %s\n", filename);
 
     return 0;
 }
