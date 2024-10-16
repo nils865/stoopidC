@@ -1,9 +1,5 @@
-# Home
-
 Welcome to the Stoopid Documentation
 
-## Contents
+### Contents
 
 - [[Language Guidelines]]
-
-
