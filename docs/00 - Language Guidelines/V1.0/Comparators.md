@@ -1,0 +1,6 @@
+- `x << y` -> x is smaller than y
+- `x >> y` -> x is bigger than y
+- `x == y` -> x equals y
+- `x != y` -> x is not y
+- `x <= y` -> x is smaller or equals y
+- `x >= y` -> x is bigger or equals y
