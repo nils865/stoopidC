@@ -5,3 +5,4 @@
 - [[Parser]]
 - [[Literal Tokenizer]]
 - [[Value Evaluation]]
+- [[Logger]]
