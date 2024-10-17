@@ -1,28 +1,37 @@
+# Compiler and flags
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -Iinclude
 
-SRC_DIR = src
-BUILD_DIR = build
-BIN_DIR = bin
+# Directories
+SRCDIR = src
+BUILDDIR = build
+BINDIR = bin
 
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
+# Find all .c files in src and its subdirectories
+SRCFILES := $(shell find $(SRCDIR) -name '*.c')
 
-TARGET = $(BIN_DIR)/stoopid
+# Convert .c files in src to corresponding .o files in build
+OBJFILES := $(SRCFILES:$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
 
+# Target executable file
+TARGET = $(BINDIR)/stoopid
+
+# Default rule
 all: $(TARGET)
 
-$(TARGET): $(OBJS) | $(BIN_DIR)
-	$(CC) $(OBJS) -o $(TARGET)
+# Rule to create the target executable
+$(TARGET): $(OBJFILES)
+	@mkdir -p $(BINDIR)
+	$(CC) $(CFLAGS) -o $@ $^
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
+# Rule to compile .c files to .o files
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
-
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
-
+# Clean rule to remove object files and the executable
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR)
+	rm -rf $(BUILDDIR) $(BINDIR)
+
+# Phony targets
+.PHONY: all clean

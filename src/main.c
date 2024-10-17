@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../include/file_io.h"
 
 int main(int argc, char* argv[]) {
     char* filename;
@@ -16,6 +17,8 @@ int main(int argc, char* argv[]) {
     if (filename == NULL) {
         return 1;
     }
+
+    read_file(&filename);
 
     printf("Filename: %s\n", filename);
 
