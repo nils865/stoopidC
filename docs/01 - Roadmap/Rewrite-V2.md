@@ -1,6 +1,6 @@
 ### Features to be implemented
 
-- [ ] Reading a **.stpd** File
+- [x] Reading a **.stpd** File
 - [ ] Implement the [[Tokenizer]]
 - [ ] [[Literal Tokenizer]]
 - [ ] Implement the [[Parser]]
