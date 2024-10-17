@@ -1,6 +1,6 @@
 #ifndef FILE_IO_H
 #define FILE_IO_H
 
-void read_file(char** name);
+char* read_file(char** name);
 
 #endif

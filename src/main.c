@@ -18,9 +18,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    read_file(&filename);
+    char* content = read_file(&filename);
 
-    printf("Filename: %s\n", filename);
+    printf("File content: %s\n", content);
 
     return 0;
 }
