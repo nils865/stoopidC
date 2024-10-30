@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "../include/file_io.h"
+#include "../include/utils/file_io.h"
+#include "../include/utils/strings.h"
 #include "../include/interpreter/tokens.h"
 
 int main(int argc, char* argv[]) {
@@ -21,11 +22,11 @@ int main(int argc, char* argv[]) {
 
     char* content = read_file(&filename);
 
-    printf("%s\n", content);
+    char** lines = split(content, '\n');
 
-    enum Token t = KEYWORD;
+    for (int i = 0; i < (sizeof(lines) / sizeof(char*)); i++) {
+        printf("%s\n", lines[i]);
+    }
 
-    printf("%d\n", t);
-
-    return 0;
+return 0;
 }
