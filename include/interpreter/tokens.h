@@ -10,4 +10,9 @@ enum Token {
     BRACKET
 };
 
+struct Tokenized {
+    char* value;
+    enum Token type;
+};
+
 #endif
