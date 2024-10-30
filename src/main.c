@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../include/file_io.h"
+#include "../include/interpreter/tokens.h"
 
 int main(int argc, char* argv[]) {
     char* filename;
@@ -20,7 +21,11 @@ int main(int argc, char* argv[]) {
 
     char* content = read_file(&filename);
 
-    printf("File content: %s\n", content);
+    printf("%s\n", content);
+
+    enum Token t = KEYWORD;
+
+    printf("%d\n", t);
 
     return 0;
 }
